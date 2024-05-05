@@ -1,9 +1,7 @@
 import os
 import sys
 sys.path.append( '/home/adamsl/factory_design/' )
-
 from input_output.FileReader import FileReader
-
 
 class TestFileReader:
     def __init__(self, file_reader):
@@ -33,8 +31,6 @@ class TestFileReader:
                         print("Cleanup failed: File still exists.")
                 except OSError as e:
                     print(f"Error removing file: {e}")
-
-
 
 file_reader = FileReader()
 tester = TestFileReader(file_reader)
