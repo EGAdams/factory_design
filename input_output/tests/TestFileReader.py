@@ -1,21 +1,22 @@
 import os
+import sys
+sys.path.append( '/home/adamsl/factory_design/' )
 
-class FileWriter:
-    def write(self, filename, content):
-        with open(filename, 'w') as file:
-            file.write(content)
+from input_output.FileReader import FileReader
 
-class TestFileWriter:
-    def __init__(self, file_writer):
-        self.file_writer = file_writer
 
-    def test_write_method(self):
+class TestFileReader:
+    def __init__(self, file_reader):
+        self.file_reader = file_reader
+
+    def execute(self):
         test_filename = 'test_file.txt'
         test_content = 'Hello, this is a test.'
         try:
-            self.file_writer.write(test_filename, test_content)
-            with open(test_filename, 'r') as file:
-                read_content = file.read()
+            with open(test_filename, 'w') as file:
+                file.write(test_content)
+            
+            read_content = self.file_reader.read(test_filename)
             assert read_content == test_content, "Test failed: Content does not match."
             print("Test passed: Content matches.")
         except AssertionError as e:
@@ -33,7 +34,8 @@ class TestFileWriter:
                 except OSError as e:
                     print(f"Error removing file: {e}")
 
-# Example usage
-file_writer = FileWriter()
-tester = TestFileWriter(file_writer)
-tester.test_write_method()
+
+
+file_reader = FileReader()
+tester = TestFileReader(file_reader)
+tester.execute()
