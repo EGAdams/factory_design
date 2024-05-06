@@ -1,0 +1,2 @@
+# Context
+We have the source code for a system that works fine, it just has too many responsibilities.  I need you to help me break the original Python file into parts.  I have already had a meeting with our other developers and they have agreed that the design depicted in the Mermaid Class Diagram is the one that we are going to use as a guide when refactoring.  We are going to incrementally build each object and eventually we will replace the entire original source code with all of our new objects.

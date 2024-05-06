@@ -1,4 +1,4 @@
-# Mermaid class diagram
+# Mermaid class diagram for the system that we are building
 ```mermaid
 classDiagram
     class FileHandlerFactory {
