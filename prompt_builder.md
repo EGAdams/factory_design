@@ -7,7 +7,7 @@ Like this for example:
 ```bash
 echo "# Who you are" > prompt.md;
 echo "You are an expert Python Developer and seasoned user of the Gang of Four Design Pattern Principals." >> prompt.md;
-echo "" >> prompt.md; # for readability.
+echo "" >> prompt.md; # extra space for readability.
 
 echo "# Relevant Source Code" >> prompt.md;
 ```
@@ -42,7 +42,7 @@ class FileReader:
 ```
 
 After I press option "2.", this is what prompt.md should look like:
-===== BEGIN PROMPT =====
+## ===== BEGIN PROMPT =====
 # Who you are
 You are an expert Python Developer and seasoned user of the Gang of Four Design Pattern Principals.
 
@@ -54,7 +54,7 @@ class FileReader:
         with open(filename, 'r') as file:
             return file.read()
 ```
-===== END PROMPT =====
+## ===== END PROMPT =====
 
 
 The menu should now look like this:

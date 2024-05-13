@@ -1,38 +1,3 @@
-# Who you are
-You are an expert Python Developer and seasoned user of the Gang of Four Design Pattern Principals.
-
-# Relevant Source Code
-## ReadFileHandler class
-```python
-class ReadFileHandler(FunctionHandler):
-    """
-    Concrete class implementing file reading functionality.
-    """
-    
-    def execute(self, parameters: dict) -> str:
-        """
-        Execute the file reading function.
-        
-        Args:
-            parameters (dict): Parameters required for reading the file.
-                - filename (str): Name of the file to read.
-        
-        Returns:
-            str: Content of the file.
-        """
-        filename = parameters.get("filename")
-        # Implement file reading logic here
-        return "File content read successfully."
-```
-## FileReader class
-```python
-class FileReader:
-    def read(self, filename):
-        with open(filename, 'r') as file:
-            return file.read()
-```
-## original_source class
-```python
 import json
 import time
 from time import sleep
@@ -71,6 +36,7 @@ def read_file( filename ): # read from hard drive
     filename = filename.replace( '/mnt/data/', '' )
     with open(filename, 'r') as file:
         return file.read()
+    
 
 assistantFactory = AssistantFactory()
 
@@ -183,56 +149,3 @@ while ( True ):
     messages_list = list(messages)
     reversed_messages = messages_list[::-1] # Reverse the list
     pretty_print( reversed_messages )
-
-```
-# Context
-We have the source code for a system that works fine, it just has too many responsibilities.  I need you to help me break the original Python file into parts.  I have already had a meeting with our other developers and they have agreed that the design depicted in the Mermaid Class Diagram is the one that we are going to use as a guide when refactoring.  We are going to incrementally build each object and eventually we will replace the entire original source code with all of our new objects.
-
-
-# Mermaid class diagram for the system that we are building
-```mermaid
-classDiagram
-    class FileHandlerFactory {
-        <<interface>>
-        +createReadHandler(): FunctionHandler
-        +createWriteHandler(): FunctionHandler
-    }
-    class LocalFileHandlerFactory {
-        +createReadHandler(): FunctionHandler
-        +createWriteHandler(): FunctionHandler
-    }
-    class RemoteFileHandlerFactory {
-        +createReadHandler(): FunctionHandler
-        +createWriteHandler(): FunctionHandler
-    }
-    class FunctionHandler {
-        <<interface>>
-        +execute(parameters: dict): str
-    }
-    class ReadFileHandler {
-        +execute(parameters: dict): str
-    }
-    class WriteFileHandler {
-        +execute(parameters: dict): str
-    }
-    class FileReader {
-        +read(filename: str): str
-    }
-    class FileWriter {
-        +write(filename: str, content: str): str
-    }
-    LocalFileHandlerFactory --|> FileHandlerFactory
-    RemoteFileHandlerFactory --|> FileHandlerFactory
-    ReadFileHandler --> FileReader : uses
-    WriteFileHandler --> FileWriter : uses
-    WriteFileHandler --|> FunctionHandler
-    ReadFileHandler --|> FunctionHandler
-    LocalFileHandlerFactory --> ReadFileHandler : creates
-    LocalFileHandlerFactory --> WriteFileHandler : creates
-    RemoteFileHandlerFactory --> ReadFileHandler : creates
-    RemoteFileHandlerFactory --> WriteFileHandler : creates
-```
-
-
-# Your Task
-Please show me how I can incrementally integrate the ReadFileHandler class into the original_source class.

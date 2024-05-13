@@ -1,5 +1,5 @@
 # cinco de mayo
-from handlers.FunctionHandler import FunctionHandler
+from handlers.function_handler import FunctionHandler
 from input_output.tests.TestFileWriter import FileWriter
 
 
